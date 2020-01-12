@@ -137,6 +137,10 @@ export interface Messages {
      * @param {string} [criteria.body] The value to seek within the target email's
      * HTML or text body.
      *
+     * @param {string} [criteria.match] If set to "ALL" (default), then only results that match 
+     * all specified criteria will be returned. If set to "ANY", results that match any 
+     * of the specified criteria will be returned.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {number} [options.timeout] Specify how long to wait for a matching

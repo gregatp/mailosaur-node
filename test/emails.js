@@ -230,6 +230,55 @@ describe('emails', () => {
                     .catch(done);
             });
         });
+
+        describe('match', () => {
+            it('unspecified', (done) => {
+                var targetEmail = emails[1];
+                client.messages
+                    .search(server, {
+                        sentTo: targetEmail.to[0].email,
+                        body: 'this is a test'
+                    })
+                    .then((result) => {
+                        var results = result.items;
+                        assert.equal(results.length, 1);
+                        done();
+                    })
+                    .catch(done);
+            });
+
+            it('all', (done) => {
+                var targetEmail = emails[1];
+                client.messages
+                    .search(server, {
+                        sentTo: targetEmail.to[0].email,
+                        body: 'this is a test',
+                        match: 'all'
+                    })
+                    .then((result) => {
+                        var results = result.items;
+                        assert.equal(results.length, 1);
+                        done();
+                    })
+                    .catch(done);
+            });
+
+            it('any', (done) => {
+                var targetEmail = emails[1];
+                client.messages
+                    .search(server, {
+                        sentTo: targetEmail.to[0].email,
+                        body: 'this is a test',
+                        match: 'any'
+                    })
+                    .then((result) => {
+                        var results = result.items;
+                        assert.equal(results.length, 6);
+                        done();
+                    })
+                    .catch(done);
+            });
+        });
     });
 
     describe('spamAnalysis', () => {

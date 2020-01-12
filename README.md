@@ -18,7 +18,13 @@ npm install mailosaur --save-dev
 
 ## Running tests
 
-Once you've cloned this repository locally, you can simply run:
+You'll need to install Mocha globally:
+
+```
+npm install -g mocha
+```
+
+Then once you've cloned this repository locally, you can simply run:
 
 ```
 npm install
